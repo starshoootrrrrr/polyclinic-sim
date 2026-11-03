@@ -7,8 +7,7 @@ st.set_page_config(page_title="臨床実習 班決めシミュレーター", lay
 st.title("🏥 臨床実習 班決めシミュレーター（ログイン＆削除機能付き）")
 
 # --- スプレッドシート接続設定 ---
-# ※ここにGoogleスプレッドシートのURLを入れてください
-SPREADSHEET_URL = "ここにGoogleスプレッドシートのURLを貼り付け"
+SPREADSHEET_URL = "https://docs.google.com/spreadsheets/d/12WjfNuRxvx851A07wbDd8dZzq1BoJnP5jwgB0tJIe-U/edit?usp=drivesdk"
 
 
 @st.cache_data(ttl=3)
@@ -165,7 +164,7 @@ else:
                 st.sidebar.success("登録データを削除しました。")
                 st.rerun()
 
-    # --- 全体の集計・判定表示（他人の点数は一切出ない） ---
+    # --- 全体の集計・判定表示 ---
     st.markdown("---")
     st.header("📊 全体の集計＆判定状況")
 
@@ -214,7 +213,7 @@ else:
                 passed_m = min(n_m, max_m)
                 passed_f = min(n_f, max_f)
 
-                if n_m > max_m or n_f > max_m:
+                if n_m > max_m or n_f > max_f:
                     status = "⚡ 点数選考発生中"
                 else:
                     status = "✅ 確定枠内"
